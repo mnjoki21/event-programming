@@ -2,7 +2,8 @@
     --primary-color: #FFDDE2;
     --button-bg: #DE369D;
     --button-text: #EFD6D2;
-    --delete-color: #DF2935;
+    --button-color:#E63462;
+    --delete-color: #03256C;
     --background: #FFB7C3;
     --bodybackground: #FFFFF2;
     --task-bg: rgba(255, 255, 255, 0.7);
@@ -104,12 +105,12 @@ body {
 }
 
 .todo-list li button {
-    background-color: var(--delete-color);
+    background-color: var(--button-color);
     color: white;
     border: none;
-    width: 30px;
+    width: 50px;
     height: 30px;
-    border-radius: 50%;
+    border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
