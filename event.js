@@ -124,7 +124,7 @@ document.addEventListener("DOMContentLoaded" , () => {
     tasks.forEach(task => {
         const {list , deleteBtn } = handleToDo(task.text , task.completed)
         setUpTasksEvents(list , deleteBtn)
-        document.querySelector('.todo-list').appendChils(list)
+        document.querySelector('.todo-list').appendChild(list)
 
     })
 
@@ -136,7 +136,7 @@ document.addEventListener("DOMContentLoaded" , () => {
         const newToDo = e.target.newToDo.value
 
         if(newToDo){
-            handleToDo(newToDo)
+            const {list , deleteBtn} = handleToDo(newToDo)
            setUpTasksEvents(list, deleteBtn)
            document.querySelector('.todo-list').appendChild(list)
            e.target.newToDo.value =''
@@ -169,9 +169,11 @@ document.addEventListener("DOMContentLoaded" , () => {
     todoList.addEventListener('dragover', (e) => {
         e.preventDefault();
         const afterElement = getDragAfterElement(todoList, e.clientY);
-        afterElement 
-            ? todoList.insertBefore(draggedItem, afterElement)
-            : todoList.appendChild(draggedItem);
+        if(afterElement.element){
+            todoList.insertBefore(draggedItem, afterElement.element)       
+        }else{
+            todoList.appendChild(draggedItem)
+        }
     });
 
     todoList.addEventListener("dragend", (e) => {
