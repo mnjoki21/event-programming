@@ -3,21 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>To Do List</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
+
 </head>
 <body>
     <div id="main">
-        <form action="#">
-            <label for="todo">Add ToDo</label>
-            <input type="text" name="todo" placeholder="Enter new ToDo">
-            <input type="submit" name="submit" id="submit-btn">
+        <h1>To Do List</h1>
+        <form action="#" class="form">
+            <label for="todo" class="todo">Add ToDo</label>
+            <input id="todo" type="text" name="newToDo" placeholder="Add a new task">
+            <input type="submit" value="Create to do" >
         </form>
 
-        <div>
+        <div id="list">
           <h2>My ToDo list:</h2>
           <ul class="todo-list"></ul>
         </div>
     </div>
+
+    
+
+    <script src="event.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 
 </body>
 </html>
