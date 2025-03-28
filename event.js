@@ -1,27 +1,21 @@
 function handleToDo (toDo, completed = false){
-    let todoList = document.querySelector(".todo-list")
+    // let todoList = document.querySelector(".todo-list")
     let list = document.createElement("li")
     let deleteBtn = document.createElement("button")
-    // deleteBtn.addEventListener("click", handleDelete)
-
-    deleteBtn.innerHTML = '<i class="fa-solid fa-trash"></i>Delete'
+    deleteBtn.innerHTML = 'Delete'
 
     list.innerHTML = `${toDo}`
     list.appendChild(deleteBtn)
+
+    //drag event 
     list.draggable = true
 
     if(completed)list.classList.add("completd")
         return {list , deleteBtn}
-    
-
-    // setUpTasksEvents(list, deleteBtn)
-    // todoList.appendChild(list)
-    // saveTasks() 
 }
 
 function setUpTasksEvents(list, deleteBtn){
 
-        
     list.addEventListener("dblclick", function() {
         const currentText = this.firstChild.textContent;
         const input = document.createElement('input');
@@ -42,6 +36,7 @@ function setUpTasksEvents(list, deleteBtn){
             saveTasks()   
             }
         }
+        //blur and enter edit events
         input.addEventListener('blur', saveEdit);
         input.addEventListener("keypress", (e) => e.key === 'Enter' && saveEdit());
     });
@@ -52,6 +47,8 @@ function setUpTasksEvents(list, deleteBtn){
             saveTasks();
         }
     });
+
+    //delete event
 
     deleteBtn.addEventListener("click", (e) => handleDelete(e))
 
@@ -99,6 +96,7 @@ function saveTasks(){
     })
     localStorage.setItem('tasks' , JSON.stringify(tasks))
 }
+
 //DRAG ELEMENTS
 
 function getDragAfterElement (container, y) {
@@ -158,6 +156,8 @@ document.addEventListener("DOMContentLoaded" , () => {
 
     const todoList = document.querySelector('.todo-list');
     let draggedItem = null;
+
+    //drag event
 
     todoList.addEventListener("dragstart", (e) => {
         if (e.target.tagName === 'LI') {
